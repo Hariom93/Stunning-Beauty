@@ -44,8 +44,10 @@ app.use(helmet({
 }));
 
 // CORS Configuration
+const clientUrl = process.env.CLIENT_URL ? process.env.CLIENT_URL.replace(/\/$/, '') : null;
 const allowedOrigins = [
-  process.env.CLIENT_URL,
+  clientUrl,
+  'https://stunning-beauty1.vercel.app',
   'https://mern-ecommerce-psi-two.vercel.app',
   'http://localhost:5173',
   'http://localhost:5174',
@@ -55,7 +57,13 @@ const allowedOrigins = [
 const corsOptions = {
   origin: function (origin, callback) {
     if (!origin) return callback(null, true);
-    if (allowedOrigins.indexOf(origin) !== -1 || /^http:\/\/localhost:\d+$/.test(origin) || /^http:\/\/(192\.168|10\.)/.test(origin)) {
+    // Allow if exact match, matches localhost port, matches LAN IP, or matches vercel.app domains
+    if (
+      allowedOrigins.indexOf(origin) !== -1 ||
+      /^http:\/\/localhost:\d+$/.test(origin) ||
+      /^http:\/\/(192\.168|10\.)/.test(origin) ||
+      /\.vercel\.app$/.test(origin)
+    ) {
       return callback(null, true);
     }
     callback(new Error('Not allowed by CORS'));

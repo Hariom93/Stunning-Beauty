@@ -210,7 +210,18 @@ export const Navbar = () => {
             </button>
 
             {/* Stunning Beauty Logo */}
-            <Link to="/" className="flex items-center gap-2 group select-none py-1 touch-manipulation">
+            <Link
+              to="/"
+              onClick={() => {
+                if (window.location.pathname === '/') {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                  });
+                }
+              }}
+              className="flex items-center gap-2 group select-none py-1 touch-manipulation"
+            >
               <img
                 src="/logo.png"
                 alt="Stunning Beauty Logo"

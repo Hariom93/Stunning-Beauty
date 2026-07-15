@@ -13,7 +13,7 @@ const getBaseURL = () => {
       return `http://${host}:5000/api/v1`;
     }
   }
-  return 'https://mern-ecommerce-v54k.onrender.com/api/v1';
+  return 'https://stunning-beauty.onrender.com/api/v1';
 };
 
 const api = axios.create({

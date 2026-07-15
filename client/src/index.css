@@ -1,0 +1,192 @@
+/* Google Fonts — must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.cjs";
+
+/* ─── CSS Variables ─── */
+:root {
+  --primary: hsl(219, 78%, 50%);
+  --primary-dark: hsl(219, 78%, 42%);
+  --secondary: hsl(21, 90%, 55%);
+  --accent: hsl(164, 70%, 42%);
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Base ─── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #f8fafc;
+  color: #1e293b;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: hsl(219, 78%, 60%); border-radius: 999px; }
+
+/* ─── Glassmorphism ─── */
+.glass {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ─── Gradient text ─── */
+.gradient-text {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6, #ec4899);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Shimmer skeleton ─── */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 1000px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ─── Card hover lift ─── */
+.card-hover {
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* ─── Flash sale timer box ─── */
+.timer-box {
+  background: linear-gradient(135deg, #1e1b4b, #312e81);
+  border-radius: 8px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ─── Section heading ─── */
+.section-heading {
+  font-size: 1.875rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+}
+
+/* ─── Premium buttons ─── */
+.btn-primary {
+  background: linear-gradient(135deg, hsl(219,78%,50%), hsl(240,70%,55%));
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.75rem 2rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 16px rgba(99,102,241,0.35);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(99,102,241,0.5);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,0.4);
+  color: white;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 0.75rem 2rem;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.15);
+  transform: translateY(-2px);
+}
+
+/* ─── Category card ─── */
+.category-card {
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  text-decoration: none;
+}
+.category-card:hover { transform: scale(1.08) translateY(-4px); }
+
+@media (max-width: 640px) {
+  .section-heading { font-size: 1.5rem; }
+}
+
+/* ─── Premium Navbar Custom Utilities ─── */
+.glass-navbar {
+  background: rgba(15, 23, 42, 0.85); /* Deep slate-900 with opacity */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.search-glow:focus-within {
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.35);
+  border-color: rgba(251, 191, 36, 0.5);
+}
+
+.nav-link-hover {
+  position: relative;
+}
+.nav-link-hover::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(90deg, #fbbf24, #ec4899);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.nav-link-hover:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+@keyframes dot-glow-animation {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+    box-shadow: 0 0 0 0 rgba(244, 63, 94, 0.7);
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+    box-shadow: 0 0 10px 4px rgba(244, 63, 94, 0.3);
+  }
+}
+
+.deals-dot-glow {
+  animation: dot-glow-animation 2s infinite ease-in-out;
+}
+
+/* Hide scrollbar but keep functional scrolling */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+

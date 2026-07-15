@@ -210,11 +210,11 @@ export const Navbar = () => {
             </button>
 
             {/* Stunning Beauty Logo */}
-            <Link to="/" className="flex items-center gap-2 group select-none py-1">
+            <Link to="/" className="flex items-center gap-2 group select-none py-1 touch-manipulation">
               <img
                 src="/logo.png"
                 alt="Stunning Beauty Logo"
-                className="h-12 sm:h-14 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                className="h-12 sm:h-14 w-auto object-contain lg:group-hover:scale-105 transition-transform duration-300"
               />
             </Link>
           </div>
